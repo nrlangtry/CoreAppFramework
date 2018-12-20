@@ -9,9 +9,9 @@ namespace FrameworkV1.Infrastructure
     {
         private External.ILogger _logger;
 
-        public Logger(External.ILogger logger)
+        public Logger(External.ILoggerFactory loggerFactory)
         {
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger("FrameworkV1");
         }
 
         public void LogDebug(string message)

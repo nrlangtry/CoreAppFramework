@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FrameworkV1.Web.Models;
 using FrameworkV1.Core.Contracts.Managers;
+using System;
 
 namespace FrameworkV1.Web.Controllers
 {
@@ -11,9 +12,18 @@ namespace FrameworkV1.Web.Controllers
 
         public IActionResult Index()
         {
-            var people = ServiceProvider.GetService<IPersonManager>().GetPeople();
+            try
+            {
+                var people = ServiceProvider.GetService<IPersonManager>().GetPeople();
 
-            return View(people);
+                return View(people);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("HomeController.Index", ex);
+            }
+
+            return View();
         }
 
         public IActionResult Privacy()

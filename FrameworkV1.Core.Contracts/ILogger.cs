@@ -2,8 +2,10 @@
 
 namespace FrameworkV1.Core.Contracts
 {
-    public interface ILogger
+    public interface ILogger : IServiceContractBase
     {
+        void LogDebug(string message);
+
         void LogTrace(string message);
 
         void LogInformation(string message);
