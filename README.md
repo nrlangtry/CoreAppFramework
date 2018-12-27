@@ -1,5 +1,5 @@
 # CoreAppFramework
-.NET Core App Framework
+.NET Core App abstracting the .NET Core Dependency Injection & Logger using the iDesign Manager/Engine/Accessor architecture design.
 
 ## Core Projects
 * **Contracts** - Interfaces
