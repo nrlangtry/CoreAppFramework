@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FrameworkV1.Web.Controllers
+namespace FrameworkV1.Clients.Web.Controllers
 {
     public abstract partial class BaseController : Controller
     {

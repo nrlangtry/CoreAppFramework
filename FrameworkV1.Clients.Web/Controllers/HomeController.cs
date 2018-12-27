@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using FrameworkV1.Web.Models;
+using FrameworkV1.Clients.Web.Models;
 using FrameworkV1.Core.Contracts.Managers;
 using System;
 
-namespace FrameworkV1.Web.Controllers
+namespace FrameworkV1.Clients.Web.Controllers
 {
     public class HomeController : BaseController
     {
