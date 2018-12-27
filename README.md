@@ -13,5 +13,5 @@
 * **Accessors** - Database access or 3rd-party access (like APIs).  Can only be called by a Manager or Engine.
 * **Tests** - The Unit Tests for all of the Infrastructure projects.
 
-## Clients Project (aka Client(s))
+## Clients Projects
 * **Web** - The .NET Core MVC frontend for this solution.
