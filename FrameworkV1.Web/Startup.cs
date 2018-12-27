@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FrameworkV1.Core;
+﻿using FrameworkV1.Core.Contracts.Accessors;
+using FrameworkV1.Core.Contracts.Managers;
+using FrameworkV1.Infrastructure.Accessors;
+using FrameworkV1.Infrastructure.Managers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Local = FrameworkV1.Core;
 
 namespace FrameworkV1.Web
 {
@@ -32,8 +30,9 @@ namespace FrameworkV1.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddFrameworkLogger();
-            services.AddServiceProvider();
+            Infrastructure.Extensions.AddServiceProvider(services);
+            services.AddScoped<IPersonManager, PersonManager>();
+            services.AddScoped<IPersonAccessor, PersonAccessor>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

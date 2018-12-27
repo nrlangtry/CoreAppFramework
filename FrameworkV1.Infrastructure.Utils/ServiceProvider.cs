@@ -1,32 +1,21 @@
 ﻿using System;
 using FrameworkV1.Core.Contracts;
-using FrameworkV1.Core.Contracts.Accessors;
-using FrameworkV1.Core.Contracts.Managers;
-using FrameworkV1.Infrastructure.Accessors;
-using FrameworkV1.Infrastructure.Managers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Local = FrameworkV1.Core.Contracts;
 
-namespace FrameworkV1.Infrastructure
+namespace FrameworkV1.Infrastructure.Utils
 {
-    public class ServiceProvider : Local.IServiceProvider
+    public class ServiceProvider
     {
-        private IServiceCollection _serviceCollection;
-        private System.IServiceProvider _serviceProvider;
+        private static IServiceCollection _serviceCollection;
+        private static System.IServiceProvider _serviceProvider;
 
-        public ServiceProvider(IServiceCollection serviceCollection)
+        public static void AddServiceProvider(IServiceCollection serviceCollection)
         {
             _serviceCollection = serviceCollection;
-
-            // Managers
-            _serviceCollection.AddScoped<IPersonManager, PersonManager>();
-
-            // Accessors
-            _serviceCollection.AddScoped<IPersonAccessor, PersonAccessor>();
         }
 
-        public T GetService<T>() where T : IServiceContractBase
+        public static T GetService<T>() where T : IServiceContractBase
         {
             if (_serviceProvider == null)
             {
@@ -43,7 +32,7 @@ namespace FrameworkV1.Infrastructure
             return service;
         }
 
-        public void OverrideService<T, I>(ServiceLifetime lifetime)
+        public static void OverrideService<T, I>(ServiceLifetime lifetime)
         {
             var service = new ServiceDescriptor(typeof(T), typeof(I), lifetime);
             _serviceCollection.Replace(service);
@@ -51,7 +40,7 @@ namespace FrameworkV1.Infrastructure
             _serviceProvider = _serviceCollection.BuildServiceProvider();
         }
 
-        public void OverrideService<T>(T instance)
+        public static void OverrideService<T>(T instance)
         {
             throw new NotImplementedException();
         }

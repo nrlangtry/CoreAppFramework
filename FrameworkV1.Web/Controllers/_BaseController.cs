@@ -15,8 +15,8 @@ namespace FrameworkV1.Web.Controllers
         protected BaseController(Core.Contracts.IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-
-            Logger.LogDebug("BaseController initialized");
+            
+            Logger.LogDebug($"{nameof(BaseController)} initialized");
         }
     }
 }
