@@ -4,19 +4,19 @@ using FrameworkV1.Infrastructure.Accessors;
 using FrameworkV1.Infrastructure.Managers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FrameworkV1.Infrastructure
+namespace FrameworkV1.Infrastructure.Configuration
 {
     public static class Extensions
     {
-        public static IServiceCollection AddServiceProvider(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddFramework(this IServiceCollection serviceCollection)
         {
-            Utils.ServiceProvider.AddServiceProvider(serviceCollection);
-
             // Managers
             serviceCollection.AddScoped<IPersonManager, PersonManager>();
 
             // Accessors
             serviceCollection.AddScoped<IPersonAccessor, PersonAccessor>();
+
+            Utils.ServiceProvider.Init(serviceCollection);
 
             return serviceCollection;
         }

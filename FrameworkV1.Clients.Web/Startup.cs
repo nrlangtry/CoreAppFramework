@@ -30,10 +30,6 @@ namespace FrameworkV1.Clients.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            Infrastructure.Extensions.AddServiceProvider(services);
-            services.AddScoped<IPersonManager, PersonManager>();
-            services.AddScoped<IPersonAccessor, PersonAccessor>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

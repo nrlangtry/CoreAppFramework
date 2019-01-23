@@ -24,32 +24,32 @@ namespace FrameworkV1.Infrastructure.Utils
             }
         }
 
-        public static void LogDebug(string message)
+        public static void Debug(string message)
         {
             logger.LogDebug(message);
         }
 
-        public static void LogTrace(string message)
+        public static void Trace(string message)
         {
             logger.LogTrace(message);
         }
 
-        public static void LogInformation(string message)
+        public static void Information(string message)
         {
             logger.LogInformation(message);
         }
 
-        public static void LogWarning(string message, Exception ex)
+        public static void Warning(string message, Exception ex)
         {
             logger.LogWarning(ex, message);
         }
 
-        public static void LogError(string message, Exception ex)
+        public static void Error(string message, Exception ex)
         {
             logger.LogError(ex, message);
         }
 
-        public static void LogCritical(string message, Exception ex)
+        public static void Critical(string message, Exception ex)
         {
             logger.LogCritical(ex, message);
         }

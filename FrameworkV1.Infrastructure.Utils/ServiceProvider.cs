@@ -24,7 +24,7 @@ namespace FrameworkV1.Infrastructure.Utils
         }
         private static System.IServiceProvider _serviceProvider;
 
-        public static void AddServiceProvider(IServiceCollection serviceCollection)
+        public static void Init(IServiceCollection serviceCollection)
         {
             ServiceCollection = serviceCollection;
         }
