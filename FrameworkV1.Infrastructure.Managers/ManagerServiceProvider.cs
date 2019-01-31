@@ -8,11 +8,11 @@ namespace FrameworkV1.Infrastructure.Managers
 {
     public class ManagerServiceProvider : ServiceProviderBase
     {
-        protected IPersonManager PersonManager => GetService<IPersonManager>();
-
         public ManagerServiceProvider(ILogger logger)
             : base(logger)
         {
+            serviceCollection.AddScoped<IServiceProvider, AccessorServiceProvider>();
+
             serviceCollection.AddScoped<IPersonManager, PersonManager>();
         }
     }

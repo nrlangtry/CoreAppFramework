@@ -7,8 +7,6 @@ namespace FrameworkV1.Infrastructure.Accessors
 {
     public class AccessorServiceProvider : ServiceProviderBase
     {
-        protected IPersonAccessor PersonAccessor => GetService<IPersonAccessor>();
-
         public AccessorServiceProvider(ILogger logger)
             : base(logger)
         {

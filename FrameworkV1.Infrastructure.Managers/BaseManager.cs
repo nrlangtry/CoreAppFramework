@@ -1,20 +1,21 @@
 ﻿using FrameworkV1.Core.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using FrameworkV1.Core.Contracts.Accessors;
 
 namespace FrameworkV1.Infrastructure.Managers
 {
-    //public abstract partial class BaseManager
-    //{
-    //    protected Core.Contracts.IServiceProvider ServiceProvider;
-    //    protected ILogger Logger => ServiceProvider.GetService<ILogger>();
+    public abstract partial class BaseManager
+    {
+        protected IServiceProvider ServiceProvider;
+        protected ILogger Logger;
 
-    //    protected BaseManager(Core.Contracts.IServiceProvider serviceProvider)
-    //    {
-    //        ServiceProvider = serviceProvider;
+        protected IPersonAccessor PersonAccessor => ServiceProvider.GetService<IPersonAccessor>();
 
-    //        Logger.LogDebug($"{nameof(BaseManager)} initialized");
-    //    }
-    //}
+        protected BaseManager(IServiceProvider serviceProvider, ILogger logger)
+        {
+            ServiceProvider = serviceProvider;
+            Logger = logger;
+
+            Logger.Debug($"{nameof(BaseManager)} initialized");
+        }
+    }
 }

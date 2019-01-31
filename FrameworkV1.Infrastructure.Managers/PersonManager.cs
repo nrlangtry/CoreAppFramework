@@ -2,16 +2,14 @@
 using FrameworkV1.Core.Contracts.Accessors;
 using FrameworkV1.Core.Contracts.Managers;
 using FrameworkV1.Core.Contracts.Models;
-using FrameworkV1.Infrastructure.Accessors;
-using FrameworkV1.Infrastructure.Utils;
-using System;
 using System.Collections.Generic;
 
 namespace FrameworkV1.Infrastructure.Managers
 {
-    public class PersonManager : AccessorServiceProvider, IPersonManager
+    public class PersonManager : BaseManager, IPersonManager
     {
-        public PersonManager(ILogger logger) : base(logger) { }
+        public PersonManager(IServiceProvider serviceProvider, ILogger logger)
+            : base(serviceProvider, logger) { }
 
         public Person GetPerson(int id)
         {
