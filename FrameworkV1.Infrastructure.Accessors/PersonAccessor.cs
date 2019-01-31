@@ -15,9 +15,7 @@ namespace FrameworkV1.Infrastructure.Accessors
             new Person() {  Id = 3,     FirstName = "Test",     LastName = "Three" }
         };
 
-        protected PersonAccessor(IServiceProvider serviceProvider, ILogger logger) : base(serviceProvider, logger)
-        {
-        }
+        protected PersonAccessor(ILogger logger) : base(logger) { }
 
         public Person AddPerson(Person person)
         {

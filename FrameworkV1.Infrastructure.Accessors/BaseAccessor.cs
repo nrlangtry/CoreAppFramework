@@ -2,14 +2,12 @@
 
 namespace FrameworkV1.Infrastructure.Accessors
 {
-    public class BaseAccessor
+    public abstract class BaseAccessor
     {
-        protected IServiceProvider ServiceProvider;
         protected ILogger Logger;
 
-        protected BaseAccessor(IServiceProvider serviceProvider, ILogger logger)
+        protected BaseAccessor(ILogger logger)
         {
-            ServiceProvider = serviceProvider;
             Logger = logger;
 
             Logger.Debug($"{nameof(BaseAccessor)} initialized");

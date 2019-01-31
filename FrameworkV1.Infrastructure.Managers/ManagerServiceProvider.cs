@@ -11,8 +11,6 @@ namespace FrameworkV1.Infrastructure.Managers
         public ManagerServiceProvider(ILogger logger)
             : base(logger)
         {
-            serviceCollection.AddScoped<IServiceProvider, AccessorServiceProvider>();
-
             serviceCollection.AddScoped<IPersonManager, PersonManager>();
         }
     }
