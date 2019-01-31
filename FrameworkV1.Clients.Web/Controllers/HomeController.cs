@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FrameworkV1.Clients.Web.Models;
-using FrameworkV1.Core.Contracts.Managers;
 using System;
 
 namespace FrameworkV1.Clients.Web.Controllers
@@ -14,13 +13,13 @@ namespace FrameworkV1.Clients.Web.Controllers
         {
             try
             {
-                var people = ServiceProvider.GetService<IPersonManager>().GetPeople();
+                var people = PersonManager.GetPeople();
 
                 return View(people);
             }
             catch (Exception ex)
             {
-                Logger.LogError("HomeController.Index", ex);
+                Logger.Error("HomeController.Index", ex);
             }
 
             return View();

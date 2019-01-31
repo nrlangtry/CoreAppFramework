@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FrameworkV1.Core.Contracts\FrameworkV1.Core.Contracts.csproj" />
-    <ProjectReference Include="..\FrameworkV1.Infrastructure.Configuration\FrameworkV1.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\FrameworkV1.Infrastructure.Managers\FrameworkV1.Infrastructure.Managers.csproj" />
   </ItemGroup>
 
 </Project>
