@@ -11,7 +11,7 @@ namespace FrameworkV1.Infrastructure.Managers
 {
     public class PersonManager : AccessorServiceProvider, IPersonManager
     {
-        public PersonManager(Core.Contracts.IServiceProvider serviceProvider, ILogger logger) : base(serviceProvider, logger) { }
+        public PersonManager(ILogger logger) : base(logger) { }
 
         public Person GetPerson(int id)
         {

@@ -6,9 +6,9 @@ using System;
 
 namespace FrameworkV1.Infrastructure.Utils
 {
-    public class ServiceProviderBase : Core.Contracts.IServiceProvider
+    public abstract class ServiceProviderBase : Core.Contracts.IServiceProvider
     {
-        private static System.IServiceProvider serviceProvider;
+        private System.IServiceProvider serviceProvider;
         protected readonly IServiceCollection serviceCollection;
 
         public ServiceProviderBase(Core.Contracts.ILogger logger)

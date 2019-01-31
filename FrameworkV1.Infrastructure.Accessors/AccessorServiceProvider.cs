@@ -9,7 +9,7 @@ namespace FrameworkV1.Infrastructure.Accessors
     {
         protected IPersonAccessor PersonAccessor => GetService<IPersonAccessor>();
 
-        public AccessorServiceProvider(Core.Contracts.IServiceProvider serviceProvider, ILogger logger)
+        public AccessorServiceProvider(ILogger logger)
             : base(logger)
         {
             serviceCollection.AddScoped<IPersonAccessor, PersonAccessor>();
