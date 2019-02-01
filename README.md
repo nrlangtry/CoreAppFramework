@@ -6,7 +6,6 @@
 * **DataContracts** - DTOs
 
 ## Infrastructure Projects
-* **Configuration** - .NET Core Startup configurations. For now it's just Dependency Injection.
 * **Utils** - Logger, Dependency Injection, Security, & other 3rd-party library abstraction classes.
 * **Managers** - Orchestrate execution of Manager/Engine/Accessor logic.
 * **Engines** - Business Logic or other isolated logic (ie - builder, processor, calculator, etc).

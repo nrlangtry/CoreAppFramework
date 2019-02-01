@@ -1,22 +1,21 @@
-﻿using FrameworkV1.Core.Contracts;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using FrameworkV1.Core.Contracts;
+using FrameworkV1.Core.Contracts.Managers;
 
 namespace FrameworkV1.Clients.Web.Controllers
 {
     public abstract partial class BaseController : Controller
     {
-        protected Core.Contracts.IServiceProvider ServiceProvider;
-        protected ILogger Logger => ServiceProvider.GetService<ILogger>();
+        private IServiceProvider ServiceProvider;
 
-        protected BaseController(Core.Contracts.IServiceProvider serviceProvider)
+        protected ILogger Logger => ServiceProvider.GetService<ILogger>();
+        protected IPersonManager PersonManager => ServiceProvider.GetService<IPersonManager>();
+
+        protected BaseController(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
-            
-            Logger.LogDebug($"{nameof(BaseController)} initialized");
+
+            Logger.Debug($"{nameof(BaseController)} initialized");
         }
     }
 }

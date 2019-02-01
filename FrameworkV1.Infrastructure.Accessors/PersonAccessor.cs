@@ -1,12 +1,12 @@
-﻿using FrameworkV1.Core.Contracts.Accessors;
+﻿using FrameworkV1.Core.Contracts;
+using FrameworkV1.Core.Contracts.Accessors;
 using FrameworkV1.Core.Contracts.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace FrameworkV1.Infrastructure.Accessors
 {
-    public class PersonAccessor : IPersonAccessor
+    public class PersonAccessor : BaseAccessor, IPersonAccessor
     {
         private List<Person> People = new List<Person>()
         {
@@ -14,6 +14,8 @@ namespace FrameworkV1.Infrastructure.Accessors
             new Person() {  Id = 2,     FirstName = "Test",     LastName = "Two" },
             new Person() {  Id = 3,     FirstName = "Test",     LastName = "Three" }
         };
+
+        protected PersonAccessor(ILogger logger) : base(logger) { }
 
         public Person AddPerson(Person person)
         {
