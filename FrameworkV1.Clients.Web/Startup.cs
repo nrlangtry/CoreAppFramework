@@ -1,5 +1,4 @@
-﻿using FrameworkV1.Infrastructure.Accessors;
-using FrameworkV1.Infrastructure.Managers;
+﻿using FrameworkV1.Infrastructure.Managers;
 using FrameworkV1.Infrastructure.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
