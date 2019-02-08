@@ -6,7 +6,7 @@ namespace FrameworkV1.Infrastructure.Managers
 {
     public abstract class BaseManager
     {
-        private IServiceProvider AccessorServiceProvider;
+        public IServiceProvider AccessorServiceProvider { get; private set };
         protected ILogger Logger;
 
         protected IPersonAccessor PersonAccessor => AccessorServiceProvider.GetService<IPersonAccessor>();

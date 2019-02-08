@@ -1,3 +1,4 @@
+using FrameworkV1.Core.Contracts;
 using FrameworkV1.Core.Contracts.Accessors;
 using FrameworkV1.Infrastructure.Managers;
 using FrameworkV1.Infrastructure.Utils;
@@ -9,22 +10,24 @@ namespace FrameworkV1.Infrastructure.Tests
 {
     public class PersonManagerTests
     {
-        //[Fact]
-        //public void PersonManager_GetPerson_Succeeds()
-        //{
-        //    int personId = 1;
+        [Fact]
+        public void PersonManager_GetPerson_Succeeds()
+        {
+            int personId = 1;
 
-        //    var personAccessorMock = new Mock<IPersonAccessor>();
-        //    personAccessorMock.Setup(x => x.GetPerson(personId)).Returns(new Core.Contracts.Models.Person() { Id = personId });
-        //    ServiceProvider.OverrideService<IPersonAccessor>(personAccessorMock.Object);
+            var personAccessorMock = new Mock<IPersonAccessor>();
+            personAccessorMock.Setup(x => x.GetPerson(personId)).Returns(new Core.Contracts.Models.Person() { Id = personId });
 
-        //    var manager = new PersonManager();
+            var loggerMock = new Mock<ILogger>();
 
-        //    var result = manager.GetPerson(personId);
+            var manager = new PersonManager(loggerMock.Object);
+            manager.AccessorServiceProvider.OverrideService<IPersonAccessor>(personAccessorMock.Object);
 
-        //    Mock.VerifyAll(personAccessorMock);
-        //    Assert.NotNull(result);
-        //    Assert.Equal(personId, result.Id);
-        //}
+            var result = manager.GetPerson(personId);
+
+            Mock.VerifyAll(personAccessorMock);
+            Assert.NotNull(result);
+            Assert.Equal(personId, result.Id);
+        }
     }
 }
