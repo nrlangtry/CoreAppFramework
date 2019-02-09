@@ -7,8 +7,8 @@ namespace FrameworkV1.Infrastructure.Accessors
 {
     public class AccessorServiceProvider : ServiceProviderBase
     {
-        public AccessorServiceProvider(ILogger logger)
-            : base(logger)
+        public AccessorServiceProvider()
+            : base()
         {
             serviceCollection.AddScoped<IPersonAccessor, PersonAccessor>();
         }

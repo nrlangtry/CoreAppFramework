@@ -18,9 +18,7 @@ namespace FrameworkV1.Infrastructure.Tests
             var personAccessorMock = new Mock<IPersonAccessor>();
             personAccessorMock.Setup(x => x.GetPerson(personId)).Returns(new Core.Contracts.Models.Person() { Id = personId });
 
-            var loggerMock = new Mock<ILogger>();
-
-            var manager = new PersonManager(loggerMock.Object);
+            var manager = new PersonManager();
             manager.AccessorServiceProvider.OverrideService<IPersonAccessor>(personAccessorMock.Object);
 
             var result = manager.GetPerson(personId);

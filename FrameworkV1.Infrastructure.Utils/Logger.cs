@@ -1,49 +1,78 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace FrameworkV1.Infrastructure.Utils
 {
-    public class Logger : Core.Contracts.ILogger
+    public static partial class StartupExtensions
     {
+        public static IServiceCollection AddApplicationLogger(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConfiguration(configuration);
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+                loggingBuilder.AddEventLog();
+            });
+
+            var loggerFactory = services.BuildServiceProvider().GetService<ILoggerFactory>();
+            Logger.AddLogger(loggerFactory);
+
+            return services;
+        }
+    }
+
+    public static class Logger
+    {
+        private static ILoggerFactory _loggerFactory;
         private static ILogger _logger;
 
         private static ILogger GetLogger()
         {
             if (_logger == null)
             {
-                var loggerFactory = new LoggerFactory();
-                _logger = loggerFactory.CreateLogger("FrameworkV1");
+                if (_loggerFactory == null)
+                    _loggerFactory = new LoggerFactory();
+
+                _logger = _loggerFactory.CreateLogger("FrameworkV1");
             }
 
             return _logger;
         }
 
-        public void Debug(string message)
+        internal static void AddLogger(ILoggerFactory loggerFactory)
+        {
+            _loggerFactory = loggerFactory;
+        }
+
+        public static void Debug(string message)
         {
             GetLogger().LogDebug(message);
         }
 
-        public void Trace(string message)
+        public static void Trace(string message)
         {
             GetLogger().LogTrace(message);
         }
 
-        public void Information(string message)
+        public static void Information(string message)
         {
             GetLogger().LogInformation(message);
         }
 
-        public void Warning(string message, Exception ex)
+        public static void Warning(string message, Exception ex)
         {
             GetLogger().LogWarning(ex, message);
         }
 
-        public void Error(string message, Exception ex)
+        public static void Error(string message, Exception ex)
         {
             GetLogger().LogError(ex, message);
         }
 
-        public void Critical(string message, Exception ex)
+        public static  void Critical(string message, Exception ex)
         {
             GetLogger().LogCritical(ex, message);
         }

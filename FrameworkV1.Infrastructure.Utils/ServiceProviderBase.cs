@@ -10,11 +10,11 @@ namespace FrameworkV1.Infrastructure.Utils
         private System.IServiceProvider serviceProvider;
         protected readonly IServiceCollection serviceCollection;
 
-        public ServiceProviderBase(Core.Contracts.ILogger logger)
+        public ServiceProviderBase()
         {
             serviceCollection = new ServiceCollection()
             {
-                new ServiceDescriptor(typeof(Core.Contracts.ILogger), logger)
+                // instance registrations from constructor params
             };
         }
 

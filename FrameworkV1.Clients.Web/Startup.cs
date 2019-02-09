@@ -29,15 +29,15 @@ namespace FrameworkV1.Clients.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddApplicationLogger(Configuration);
+
             services.AddScoped<Core.Contracts.IServiceProvider, ManagerServiceProvider>();
-            services.AddSingleton<Core.Contracts.ILogger, Logger>();
-            //services.AddSingleton<ILoggerFactory>(LoggerHelper.GetLoggerFactory());
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

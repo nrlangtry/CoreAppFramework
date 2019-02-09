@@ -7,8 +7,7 @@ namespace FrameworkV1.Infrastructure.Managers
 {
     public class ManagerServiceProvider : ServiceProviderBase
     {
-        public ManagerServiceProvider(ILogger logger)
-            : base(logger)
+        public ManagerServiceProvider()
         {
             serviceCollection.AddScoped<IPersonManager, PersonManager>();
         }
